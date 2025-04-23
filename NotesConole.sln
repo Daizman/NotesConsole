@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesConole", "NotesConole\NotesConole.csproj", "{CE718F7C-AEE6-4C00-9530-3A8ECA8886AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE718F7C-AEE6-4C00-9530-3A8ECA8886AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE718F7C-AEE6-4C00-9530-3A8ECA8886AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE718F7C-AEE6-4C00-9530-3A8ECA8886AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE718F7C-AEE6-4C00-9530-3A8ECA8886AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45163021-1024-4759-B1B2-00BB4C1DC594}
+	EndGlobalSection
+EndGlobal
