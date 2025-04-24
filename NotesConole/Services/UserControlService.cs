@@ -12,23 +12,20 @@ namespace NotesConole.Services
 
         private User _user = null;
 
-        public User GetUser() => _user;
-
-        public bool Login()
+        public User Login()
         {
             if (!File.Exists(_userFile))
             {
-                return false;
+                return _user;
             }
 
             var userFromFile = File.ReadAllText(_userFile);
             if (!string.IsNullOrEmpty(userFromFile))
             {
                 _user = JsonSerializer.Deserialize<User>(userFromFile);
-                return true;
             }
 
-            return false;
+            return _user;
         }
 
         public User Register(string userName)
