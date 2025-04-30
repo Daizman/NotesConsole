@@ -1,5 +1,5 @@
 ﻿using System;
-using NotesConole.Abstract;
+using NotesConole.Abstractions;
 
 namespace NotesConole.Services
 {

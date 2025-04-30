@@ -1,7 +1,6 @@
 ﻿using System.IO;
-// ToDo: Не забыть написать, что для .NET Framework нужно поставить пакет
 using System.Text.Json;
-using NotesConole.Abstract;
+using NotesConole.Abstractions;
 using NotesConole.Models;
 
 namespace NotesConole.Services

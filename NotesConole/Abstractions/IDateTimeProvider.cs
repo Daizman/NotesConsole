@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NotesConole.Abstract
+namespace NotesConole.Abstractions
 {
     internal interface IDateTimeProvider
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NotesConole.Models;
 
-namespace NotesConole.Abstract
+namespace NotesConole.Abstractions
 {
     internal interface INoteRepository
     {

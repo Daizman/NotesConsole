@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NotesConole.Abstract;
+using NotesConole.Abstractions;
 using NotesConole.Exceptions;
 using NotesConole.Models;
 

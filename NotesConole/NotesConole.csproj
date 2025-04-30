@@ -74,9 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IDateTimeProvider.cs" />
-    <Compile Include="Abstract\INoteRepository.cs" />
-    <Compile Include="Abstract\IUserControlService.cs" />
+    <Compile Include="Abstractions\IDateTimeProvider.cs" />
+    <Compile Include="Abstractions\INoteRepository.cs" />
+    <Compile Include="Abstractions\IUserControlService.cs" />
     <Compile Include="Exceptions\NoteNotFoundException.cs" />
     <Compile Include="Exceptions\UserNotLoggedException.cs" />
     <Compile Include="Models\Note.cs" />
