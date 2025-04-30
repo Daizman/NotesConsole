@@ -86,10 +86,7 @@ namespace NotesConole.Services
 
         private void Save()
         {
-            using (var writer = new StreamWriter(_saveFile))
-            {
-                writer.Write(JsonSerializer.Serialize(_notes));
-            }
+            File.WriteAllText(_saveFile, JsonSerializer.Serialize(_notes));
         }
 
         private Note GetNoteAndThrowIfNotFound(int id)

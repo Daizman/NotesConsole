@@ -34,10 +34,7 @@ namespace NotesConole.Services
             {
                 Name = userName,
             };
-            using (var writer = new StreamWriter(_userFile))
-            {
-                writer.Write(JsonSerializer.Serialize(_user));
-            }
+            File.WriteAllText(_userFile, JsonSerializer.Serialize(_user));
             return _user;
         }
     }

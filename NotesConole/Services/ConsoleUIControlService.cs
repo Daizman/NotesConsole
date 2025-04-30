@@ -43,29 +43,54 @@ namespace NotesConole.Services
             Console.WriteLine("You can start typing comands (write \"help\" for more info):");
             while (_running)
             {
-                if (_user == null)
-                {
-                    _user = _userControlService.Login();
-                    if (_user != null)
-                    {
-                        Console.WriteLine($"Wellcome back, {_user.Name}");
-                        ViewNotes();
-                    }
-                }
+                LoginIfNot();
 
-                var command = Console.ReadLine().Trim().ToLowerInvariant();
-                if (_uiCommandsHandlers.ContainsKey(command))
-                {
-                    _uiCommandsHandlers[command]();
-                }
-                else
-                {
-                    Console.WriteLine("Unkown command!");
-                    PrintAllowedCommands();
-                }
+                ObtainAndHandleCommand();
             }
 
             Console.WriteLine($"Goodbye, {_user?.Name ?? "anonymus"}!");
+        }
+
+        private void LoginIfNot()
+        {
+            if (_user == null)
+            {
+                _user = _userControlService.Login();
+                if (_user != null)
+                {
+                    Console.WriteLine($"Wellcome back, {_user.Name}");
+                    ViewNotes();
+                }
+            }
+        }
+
+        private void ObtainAndHandleCommand()
+        {
+            var command = Console.ReadLine().Trim().ToLowerInvariant();
+            if (_uiCommandsHandlers.ContainsKey(command))
+            {
+                try
+                {
+                    _uiCommandsHandlers[command]();
+                }
+                catch (UserNotLoggedException unle)
+                {
+                    Console.WriteLine(unle.Message);
+                }
+                catch (NoteNotFoundException nnfe)
+                {
+                    Console.WriteLine(nnfe.Message);
+                }
+                catch
+                {
+                    Console.WriteLine("Unkown exception!!!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unkown command!");
+                PrintAllowedCommands();
+            }
         }
 
         private void Register()
