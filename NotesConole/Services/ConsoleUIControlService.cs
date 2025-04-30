@@ -43,9 +43,24 @@ namespace NotesConole.Services
             Console.WriteLine("You can start typing comands (write \"help\" for more info):");
             while (_running)
             {
-                LoginIfNot();
+                try
+                {
+                    LoginIfNot();
 
-                ObtainAndHandleCommand();
+                    ObtainAndHandleCommand();
+                }
+                catch (UserNotLoggedException unle)
+                {
+                    Console.WriteLine(unle.Message);
+                }
+                catch (NoteNotFoundException nnfe)
+                {
+                    Console.WriteLine(nnfe.Message);
+                }
+                catch
+                {
+                    Console.WriteLine("Unkown exception!!!");
+                }
             }
 
             Console.WriteLine($"Goodbye, {_user?.Name ?? "anonymus"}!");
@@ -69,22 +84,7 @@ namespace NotesConole.Services
             var command = Console.ReadLine().Trim().ToLowerInvariant();
             if (_uiCommandsHandlers.ContainsKey(command))
             {
-                try
-                {
-                    _uiCommandsHandlers[command]();
-                }
-                catch (UserNotLoggedException unle)
-                {
-                    Console.WriteLine(unle.Message);
-                }
-                catch (NoteNotFoundException nnfe)
-                {
-                    Console.WriteLine(nnfe.Message);
-                }
-                catch
-                {
-                    Console.WriteLine("Unkown exception!!!");
-                }
+                _uiCommandsHandlers[command]();
             }
             else
             {
