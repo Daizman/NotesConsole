@@ -15,7 +15,7 @@ namespace NotesConole.Services
         {
             if (!File.Exists(_userFile))
             {
-                return _user;
+                return null;
             }
 
             var userFromFile = File.ReadAllText(_userFile);

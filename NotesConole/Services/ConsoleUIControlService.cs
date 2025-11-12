@@ -39,14 +39,21 @@ namespace NotesConole.Services
         public void RunUI()
         {
             _running = true;
-            Console.WriteLine("Hello! This is note application. You can manage your notes here.");
-            Console.WriteLine("You can start typing comands (write \"help\" for more info):");
+
+            if (LoginIfUserExists())
+            {
+                ViewNotes();
+            }
+            else
+            {
+                Console.WriteLine("Hello! This is note application. You can manage your notes here.");
+                Console.WriteLine("You can start typing comands (write \"help\" for more info):");
+            }
+
             while (_running)
             {
                 try
                 {
-                    LoginIfNot();
-
                     ObtainAndHandleCommand();
                 }
                 catch (UserNotLoggedException unle)
@@ -66,7 +73,7 @@ namespace NotesConole.Services
             Console.WriteLine($"Goodbye, {_user?.Name ?? "anonymus"}!");
         }
 
-        private void LoginIfNot()
+        private bool LoginIfUserExists()
         {
             if (_user == null)
             {
@@ -74,9 +81,10 @@ namespace NotesConole.Services
                 if (_user != null)
                 {
                     Console.WriteLine($"Wellcome back, {_user.Name}");
-                    ViewNotes();
+                    return true;
                 }
             }
+            return false;
         }
 
         private void ObtainAndHandleCommand()
@@ -172,7 +180,7 @@ namespace NotesConole.Services
         private void RemoveNote()
         {
             ThrowIfUserNotLogged();
-            if(!TryToGetNoteIdFromConsole(out var id))
+            if (!TryToGetNoteIdFromConsole(out var id))
             {
                 return;
             }

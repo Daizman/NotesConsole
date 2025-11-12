@@ -27,9 +27,9 @@ namespace NotesConole.Services
             _notes = JsonSerializer.Deserialize<List<Note>>(notesFromFile);
         }
 
-        public IEnumerable<Note> GetNotes() => _notes;
+        public IReadOnlyList<Note> GetNotes() => _notes;
 
-        public void AddNote(string title, string description, User user)
+        public void AddNote(string title, string description)
             => ExecuteWithSave(() =>
             {
                 var note = new Note
@@ -38,7 +38,6 @@ namespace NotesConole.Services
                     Title = title,
                     Description = description,
                     CreatedDate = _dateTimeProvider.UtcNow,
-                    User = user,
                     IsCompleted = false,
                 };
                 _notes.Add(note);

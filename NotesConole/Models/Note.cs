@@ -10,8 +10,6 @@ namespace NotesConole.Models
         public DateTime CreatedDate { get; set; }
         public bool IsCompleted { get; set; }
 
-        public User User { get; set; }
-
         public override string ToString()
         {
             var completedStatus = IsCompleted ? 'v' : 'x';
