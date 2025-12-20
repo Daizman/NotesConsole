@@ -139,7 +139,7 @@ namespace NotesConole.Services
             Console.WriteLine("Desciption:");
             var desciption = Console.ReadLine().Trim();
 
-            _noteRepository.AddNote(title, desciption, _user);
+            _noteRepository.AddNote(title, desciption);
             Console.WriteLine("Added.");
             ViewNotes();
         }
